@@ -20,11 +20,16 @@ def first_word(word)
 end
 
 def titleize(word)
-    words = word.split(" ")
+    words = word.split(' ')
+    little_words = ['and','the','or','over','to','the','a','but']
     initial = word.split[0]
     result = initial[0].upcase + initial[1,initial.length]
     words.drop(1).each do |value|
-        result << " " + value[0].upcase + value[1,value.length]
+        if not little_words.include?(value)
+            result << ' ' + value[0].upcase + value[1,value.length]
+        else
+            result << ' ' + value
+        end
     end
     return result
 end
